@@ -1,6 +1,4 @@
 #include "mmallocc.h"
-#include <errno.h>
-#include <signal.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -42,7 +40,7 @@ void *malloc(size_t req_size) {
       continue;
 
     traverse->block_size = req_size;
-    uint8_t *ptr = (uint8_t *)traverse->next_block;
+    uint8_t *ptr = (uint8_t *)(&traverse->next_block);
     return ptr;
   }
 
